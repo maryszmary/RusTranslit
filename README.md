@@ -38,3 +38,8 @@ Example output:
 ```python
 'из зис а рил лайф? из зис джаст фентеси?'
 ```
+
+## Authors
+
+* Maria Sheyanova @maryszmary
+* Anna Nikolaeva @annnyway
