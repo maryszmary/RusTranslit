@@ -26,15 +26,15 @@ pip install .
 
 ## Usage
 
-Sample code:
+Example code:
 
 ```python
 from rus_translit import transliterate
 
-transliterate('is this just fantasy') 
+transliterate('is this a real life? is this just fantasy?')
 ```
 
-Sample output:
+Example output:
 ```python
-'из зис джаст фентеси'
+'из зис а рил лайф? из зис джаст фентеси?'
 ```
