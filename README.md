@@ -13,15 +13,24 @@ git clone http://github.com/festvox/flite
 cd flite
 ./configure
 make
-make get_voices
+cd testsuit
+make
 ```
+
+For epitran to access this module, you might want to add the following line to `~/.bashrc`:
+
+```sh
+export PATH=<path-to-flite>/testsuit:$PATH
+```
+
+Or simply run the command above in terminal to get acces to it in the current terminal session.
 
 ### Build module
 
 ```sh
 git clone https://github.com/maryszmary/RusTranslit
 cd RusTranslit
-pip install .
+pip install -e .
 ```
 
 ## Usage
