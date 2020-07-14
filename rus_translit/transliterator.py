@@ -43,6 +43,9 @@ def transliterate_word(word):
                 
         elif letter == "θ" and i == len(transcription)-1:
             result += "с"
+
+        elif letter == 'ŋ' and i + 1 < len(transcription) and transcription[i + 1] == 'k':
+            result += 'н'
                 
         else:
             if letter in REGULAR_DICT:
