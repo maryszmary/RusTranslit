@@ -5,7 +5,8 @@ TEST_PAIRS = [
     ('kitten', 'китен'),
     ('treatment', 'тритмент'),
     ('cup', 'кап'),
-    ('thank', 'сенк')
+    ('thank', 'сенк'),
+    ('quiz', 'квиз')
 ]
 
 def test_transliterate():

@@ -45,3 +45,10 @@ VOWEL_EXTRA_DICT = {
     "a":"а",
     "e": "е",
 }
+
+KNOWN_WORDS = {
+    'disney': 'дисней',
+    'auchan': 'ашан',
+    'facepalm': 'фейспалм',
+    'cringe': 'кринж'
+}
