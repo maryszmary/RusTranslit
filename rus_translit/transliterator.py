@@ -53,10 +53,8 @@ def transliterate_word(word):
         else:
             if letter in REGULAR_DICT:
                 result += REGULAR_DICT[letter]
-                continue
             else:
                 result += letter
-                continue 
     result += " "
     result = result.strip()
     return result    
