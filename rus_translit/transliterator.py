@@ -73,7 +73,7 @@ def memoize(f):
 
 @memoize
 def transliterate_word_mem(word):
-    return transliterate(word)
+    return transliterate_word(word)
 
 
 def transliterate_memoized(phrase):
