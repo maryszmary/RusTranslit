@@ -55,8 +55,26 @@ def transliterate_word(word):
                 result += REGULAR_DICT[letter]
             else:
                 result += letter
-    return result    
+    return result
 
 
 def transliterate(phrase):
     return ' '.join(transliterate_word(word) for word in phrase.split())
+
+
+def memoize(f):
+    memo = {}
+    def helper(x):
+        if x not in memo:
+            memo[x] = f(x)
+        return memo[x]
+    return helper
+
+
+@memoize
+def transliterate_word_mem(word):
+    return transliterate(word)
+
+
+def transliterate_memoized(phrase):
+    return ' '.join(transliterate_word_mem(word) for word in phrase.split())

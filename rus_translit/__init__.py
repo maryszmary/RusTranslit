@@ -1,2 +1,2 @@
 from . import mappings
-from .transliterator import transliterate
+from .transliterator import transliterate, transliterate_memoized
