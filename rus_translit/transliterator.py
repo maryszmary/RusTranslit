@@ -1,8 +1,17 @@
+from string import ascii_letters
 from epitran import Epitran
 from .mappings import REGULAR_DICT, VOWEL_EXTRA_DICT
 
 
+ASCII_LETTERS = set(ascii_letters)
 EPITRAN = Epitran("eng-Latn", ligatures=True)
+
+
+def is_ascii(s):
+    """
+    There is no str.isascii in python 3.6
+    """
+    return bool(set(s) & ASCII_LETTERS)
 
 
 def transliterate_word(word):
@@ -77,4 +86,12 @@ def transliterate_word_mem(word):
 
 
 def transliterate_memoized(phrase):
-    return ' '.join(transliterate_word_mem(word) for word in phrase.split())
+    transliterated = []
+
+    # TODO: do it in both implementations
+    for word in phrase.split():
+        if is_ascii(word):
+            transliterated.append(transliterate_word_mem(word))
+        else:
+            transliterated.append(word)
+    return ' '.join(transliterated)
