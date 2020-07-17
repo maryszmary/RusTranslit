@@ -35,8 +35,8 @@ def transliterate_word(word):
         elif letter == 'ɹ' and i != 0 and transcription[i-1] == "s":
             result += "ер"
             
-        elif letter == "ə" and i == 0 and word[0] != "u":
-            result += VOWEL_EXTRA_DICT[word[0]]
+        elif letter == "ə" and i == 0 and word[0].lower() != "u":
+            result += VOWEL_EXTRA_DICT[word[0].lower()]
             
         elif letter == "ə" and transcription.endswith("iə") and i == len(transcription)-1:
             result += "я"
