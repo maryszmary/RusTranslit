@@ -1,10 +1,11 @@
 from string import ascii_letters
-from epitran import Epitran
+# from epitran import Epitran
+from eng_to_ipa import convert
 from .mappings import REGULAR_DICT, VOWEL_EXTRA_DICT
 
 
 ASCII_LETTERS = set(ascii_letters)
-EPITRAN = Epitran("eng-Latn", ligatures=True)
+# EPITRAN = Epitran("eng-Latn", ligatures=True)
 
 
 def is_ascii(s):
@@ -15,7 +16,8 @@ def is_ascii(s):
 
 
 def transliterate_word(word):
-    transcription = EPITRAN.transliterate(word)
+    # transcription = EPITRAN.transliterate(word)
+    transcription = convert(word).replace('ˈ', '')
     result = ''
 
     for i, letter in enumerate(transcription):
@@ -29,14 +31,17 @@ def transliterate_word(word):
         elif letter == 'j' and i != len(transcription)-1 and transcription[i+1] in ["u", 'ʊ']: 
             continue
             
-        elif letter == 'ɹ' and i==len(transcription)-2 and word.endswith("er"):
+        elif letter in 'ɹ' and i==len(transcription)-2 and word.endswith("er"):
             result += "ер"
                 
-        elif letter == 'ɹ' and i != 0 and transcription[i-1] == "s":
+        elif letter in 'ɹr' and i != 0 and transcription[i-1] == "s":
             result += "ер"
             
         elif letter == "ə" and i == 0 and word[0].lower() != "u":
             result += VOWEL_EXTRA_DICT[word[0].lower()]
+
+        elif letter == "ə" and word.lower()[i] == "u":
+            result += "а"
             
         elif letter == "ə" and transcription.endswith("iə") and i == len(transcription)-1:
             result += "я"
@@ -68,7 +73,14 @@ def transliterate_word(word):
 
 
 def transliterate(phrase):
-    return ' '.join(transliterate_word(word) for word in phrase.split())
+    transliterated = []
+
+    for word in phrase.split():
+        if is_ascii(word):
+            transliterated.append(transliterate_word(word))
+        else:
+            transliterated.append(word)
+    return ' '.join(transliterated)
 
 
 def memoize(f):
@@ -88,7 +100,6 @@ def transliterate_word_mem(word):
 def transliterate_memoized(phrase):
     transliterated = []
 
-    # TODO: do it in both implementations
     for word in phrase.split():
         if is_ascii(word):
             transliterated.append(transliterate_word_mem(word))
