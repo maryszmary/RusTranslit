@@ -4,6 +4,6 @@ setup(
     name='rus_translit',
     version='1.0',
     install_requires=[
-          'epitran',
+          'eng_to_ipa',
       ],
     )
