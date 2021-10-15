@@ -1,6 +1,6 @@
 from string import ascii_letters
 from eng_to_ipa import convert
-from .mappings import REGULAR_DICT, VOWEL_EXTRA_DICT
+from .mappings import REGULAR_DICT, VOWEL_EXTRA_DICT, KNOWN_WORDS
 
 
 ASCII_LETTERS = set(ascii_letters)
@@ -14,7 +14,10 @@ def is_ascii(s):
 
 
 def transliterate_word(word):
-    transcription = convert(word).replace('ˈ', '')
+    if word.lower() in KNOWN_WORDS:
+        return KNOWN_WORDS[word.lower()]
+
+    transcription = convert(word).replace('ˈ', '').replace('ˌ', '')
     result = ''
 
     for i, letter in enumerate(transcription):
@@ -35,7 +38,7 @@ def transliterate_word(word):
             result += "ер"
             
         elif letter == "ə" and i == 0 and word[0].lower() != "u":
-            result += VOWEL_EXTRA_DICT[word[0].lower()]
+            result += VOWEL_EXTRA_DICT.get(word[0].lower(), "э")
 
         elif letter == "ə" and word.lower()[i] == "u":
             result += "а"
@@ -66,7 +69,7 @@ def transliterate_word(word):
                 result += REGULAR_DICT[letter]
             else:
                 result += letter
-    return result
+    return result.replace('*', '')
 
 
 def transliterate(phrase):
@@ -74,7 +77,10 @@ def transliterate(phrase):
 
     for word in phrase.split():
         if is_ascii(word):
-            transliterated.append(transliterate_word(word))
+            try:
+                transliterated.append(transliterate_word(word))
+            except:
+                transliterated.append(word)
         else:
             transliterated.append(word)
     return ' '.join(transliterated)

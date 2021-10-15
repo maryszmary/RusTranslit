@@ -38,6 +38,7 @@ REGULAR_DICT = {
     'ɹ': "р",
     'r': "р",
     'ð':"з",
+    'g': 'г',
 }
 
 
@@ -51,5 +52,19 @@ KNOWN_WORDS = {
     'disney': 'дисней',
     'auchan': 'ашан',
     'facepalm': 'фейспалм',
-    'cringe': 'кринж'
+    'cringe': 'кринж',
+    'mars': 'марс',
+    'rexona': 'рексона',
+    'coca-cola': 'кока-кола',
+    'jacobs': 'якобс',
+    'schweppes': 'швепс',
+    'pulpy': 'палпи',
+    'orbit': 'орбит',
+    'nescafe': 'нескафе',
+    'jardin': 'жардин',
+    'nesquik': 'несквик',
+    'lays': 'лейз',
+    'fruittella': 'фрутелла',
+    'actimel': 'актимель',
+    'snickers': 'сникерс',
 }
