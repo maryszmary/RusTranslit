@@ -180,5 +180,12 @@ KNOWN_WORDS = {
     "gallina blanca": "галина бланка", 
     "lay's": "лейс", 
     "lays": "лейс", 
-    "oreo": "орео"
+    "oreo": "орео",
+    "kinder": "киндер",
+    "chocopie": "чокопай",
+    "choco-pie": "чокопай",
+    "choco pie": "чокопай",
+    "meller": "меллер",
+    "old spice": "олд спайс",
+    "ahmad": "ахмад"
 }
