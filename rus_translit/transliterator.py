@@ -1,9 +1,10 @@
 from string import ascii_letters
-from eng_to_ipa import convert
+from epitran import Epitran
 from .mappings import REGULAR_DICT, VOWEL_EXTRA_DICT, KNOWN_WORDS
 
 
 ASCII_LETTERS = set(ascii_letters)
+EPITRAN = Epitran("eng-Latn", ligatures=True)
 
 
 def is_ascii(s):
@@ -17,11 +18,12 @@ def transliterate_word(word):
     if word.lower() in KNOWN_WORDS:
         return KNOWN_WORDS[word.lower()]
 
-    transcription = convert(word).replace('ˈ', '').replace('ˌ', '')
+    # transcription = convert(word).replace('ˈ', '').replace('ˌ', '')
+    transcription = EPITRAN.transliterate(word)
     result = ''
 
     for i, letter in enumerate(transcription):
-        
+
         if letter == 'æ' and i == 0: 
             result += 'э'
                 
