@@ -42,7 +42,7 @@ def transliterate_word(word):
         elif letter == "ə" and i == 0 and word[0].lower() != "u":
             result += VOWEL_EXTRA_DICT.get(word[0].lower(), "э")
 
-        elif letter == "ə" and word.lower()[i] == "u":
+        elif letter == "ə" and i < len(word) and word.lower()[i] == "u":
             result += "а"
             
         elif letter == "ə" and transcription.endswith("iə") and i == len(transcription)-1:
