@@ -186,6 +186,15 @@ KNOWN_WORDS = {
     "choco-pie": "чокопай",
     "choco pie": "чокопай",
     "meller": "меллер",
-    "old spice": "олд спайс",
-    "ahmad": "ахмад"
+    "old": "олд",
+    "spice": "спайс",
+    "ahmad": "ахмад",
+    "kitekat": "китекет",
+    "domestos": "доместос",
+    "felix": "феликс",
+    "maccoffee": "маккофе",
+    "vernel": "вернель",
+    "barilla": "барилла",
+    "chappi": "чаппи",
+    "carlsberg": "карлсберг",
 }
